@@ -8,5 +8,9 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petercjl/taobao-soutui-studio.git"
   }
 }
