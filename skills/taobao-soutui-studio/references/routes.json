@@ -1,0 +1,27 @@
+{
+  "routes": {
+    "plan": {
+      "files": [
+        "SCHEMA.md",
+        "index.md",
+        "log.md",
+        "queries/plan-five-images.md",
+        "topics/official-quality.md",
+        "topics/direction-planning.md"
+      ]
+    },
+    "generate": {
+      "files": [
+        "queries/generate-and-review.md",
+        "topics/generation-and-qa.md",
+        "topics/sealseek-generation.md"
+      ]
+    },
+    "copy": {
+      "files": [
+        "queries/write-copy.md",
+        "topics/copywriting.md"
+      ]
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "schema": "portable-skill-capabilities",
+  "schema_version": "1.0.0",
+  "skill": "taobao-soutui-studio",
+  "target_platforms": [
+    "codex",
+    "generic"
+  ],
+  "capabilities": [
+    {
+      "id": "command.execute",
+      "purpose": "运行已发现的tbcli和本地输入校验器",
+      "required": true,
+      "required_features": [
+        "argv-execution",
+        "exit-status",
+        "structured-output"
+      ],
+      "input_fields": [
+        "argv"
+      ],
+      "output_fields": [
+        "exitCode",
+        "stdout"
+      ],
+      "side_effects": {
+        "external_mutation": false,
+        "may_cost_money": false,
+        "authorization": "仅执行本次用户意图；方向选择后才在授权内生成，用户选图后仅上传选中项；creative-only不访问商家后台，prepare不提交文章。"
+      },
+      "errors": [
+        "CAPABILITY_UNAVAILABLE",
+        "FEATURE_UNSUPPORTED",
+        "AUTH_REQUIRED",
+        "OUTPUT_CONTRACT_FAILED"
+      ]
+    },
+    {
+      "id": "filesystem.artifacts",
+      "purpose": "保存商品台账修订、原始主图、候选与独立回执",
+      "required": true,
+      "required_features": [
+        "read-write",
+        "exclusive-create",
+        "public-image-download",
+        "sha256",
+        "exclusive-lock",
+        "revision-conflict-detection"
+      ],
+      "input_fields": [
+        "paths",
+        "sourceUrls"
+      ],
+      "output_fields": [
+        "localPaths",
+        "hashes"
+      ],
+      "side_effects": {
+        "external_mutation": false,
+        "may_cost_money": false,
+        "authorization": "仅执行本次用户意图；方向选择后才在授权内生成，用户选图后仅上传选中项；creative-only不访问商家后台，prepare不提交文章。"
+      },
+      "errors": [
+        "CAPABILITY_UNAVAILABLE",
+        "FEATURE_UNSUPPORTED",
+        "AUTH_REQUIRED",
+        "OUTPUT_CONTRACT_FAILED"
+      ]
+    },
+    {
+      "id": "media.image.inspect",
+      "purpose": "查看商品参考与生成图片",
+      "required": true,
+      "required_features": [
+        "local-image-view",
+        "reference-comparison"
+      ],
+      "input_fields": [
+        "imagePaths"
+      ],
+      "output_fields": [
+        "observations",
+        "qa"
+      ],
+      "side_effects": {
+        "external_mutation": false,
+        "may_cost_money": false,
+        "authorization": "仅执行本次用户意图；方向选择后才在授权内生成，用户选图后仅上传选中项；creative-only不访问商家后台，prepare不提交文章。"
+      },
+      "errors": [
+        "CAPABILITY_UNAVAILABLE",
+        "FEATURE_UNSUPPORTED",
+        "AUTH_REQUIRED",
+        "OUTPUT_CONTRACT_FAILED"
+      ]
+    },
+    {
+      "id": "media.image.generate",
+      "purpose": "从真实商品参考生成独立图片",
+      "required": true,
+      "required_features": [
+        "reference-image-edit",
+        "aspect-intent",
+        "local-artifact-result"
+      ],
+      "input_fields": [
+        "references",
+        "prompt",
+        "aspectRatio"
+      ],
+      "output_fields": [
+        "artifacts",
+        "metadata",
+        "task_id"
+      ],
+      "side_effects": {
+        "external_mutation": true,
+        "may_cost_money": true,
+        "authorization": "仅执行本次用户意图；方向选择后才在授权内生成，用户选图后仅上传选中项；creative-only不访问商家后台，prepare不提交文章。"
+      },
+      "errors": [
+        "CAPABILITY_UNAVAILABLE",
+        "FEATURE_UNSUPPORTED",
+        "AUTH_REQUIRED",
+        "OUTPUT_CONTRACT_FAILED"
+      ]
+    },
+    {
+      "id": "commerce.tbcli",
+      "purpose": "采集商品、核对店铺、上传图片、按mode发布",
+      "required": true,
+      "required_features": [
+        "item-summary-v1",
+        "merchant-inspect",
+        "folder-upload-v1",
+        "publish",
+        "prepare",
+        "persistent-publication-journal"
+      ],
+      "input_fields": [
+        "itemId",
+        "shopName",
+        "files",
+        "title",
+        "body",
+        "mode"
+      ],
+      "output_fields": [
+        "summary",
+        "uploadReceipt",
+        "publicationReceipt"
+      ],
+      "side_effects": {
+        "external_mutation": true,
+        "may_cost_money": false,
+        "authorization": "仅执行本次用户意图；方向选择后才在授权内生成，用户选图后仅上传选中项；creative-only不访问商家后台，prepare不提交文章。"
+      },
+      "errors": [
+        "CAPABILITY_UNAVAILABLE",
+        "FEATURE_UNSUPPORTED",
+        "AUTH_REQUIRED",
+        "OUTPUT_CONTRACT_FAILED"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@petercjl/taobao-soutui-studio",
+  "version": "0.1.0",
+  "description": "Taobao and Tmall recommendation-material application Skill",
+  "files": [
+    "skills",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

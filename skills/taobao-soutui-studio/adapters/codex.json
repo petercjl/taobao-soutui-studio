@@ -1,0 +1,90 @@
+{
+  "schema": "portable-skill-adapter",
+  "schema_version": "1.0.0",
+  "platform": "codex",
+  "mappings": [
+    {
+      "capability_id": "command.execute",
+      "status": "implemented",
+      "features": [
+        "argv-execution",
+        "exit-status",
+        "structured-output"
+      ],
+      "implementation": {
+        "kind": "instruction",
+        "discovery": "使用当前宿主已公开的对应能力，验证所需功能；缺失返回标准能力错误。",
+        "normalization": "成功转换为ok/artifacts/metadata/task_id/cost/warnings，失败保留code/message。"
+      }
+    },
+    {
+      "capability_id": "filesystem.artifacts",
+      "status": "implemented",
+      "features": [
+        "read-write",
+        "exclusive-create",
+        "public-image-download",
+        "sha256",
+        "exclusive-lock",
+        "revision-conflict-detection"
+      ],
+      "implementation": {
+        "kind": "instruction",
+        "discovery": "使用当前宿主已公开的对应能力，验证所需功能；缺失返回标准能力错误。",
+        "normalization": "成功转换为ok/artifacts/metadata/task_id/cost/warnings，失败保留code/message。",
+        "instructions": "通过bundled scripts/product_ledger.py维护商品台账；独占锁、expect-revision与追加修订，render创建新HTML；冲突重读，不覆盖历史。"
+      }
+    },
+    {
+      "capability_id": "media.image.inspect",
+      "status": "implemented",
+      "features": [
+        "local-image-view",
+        "reference-comparison"
+      ],
+      "implementation": {
+        "kind": "instruction",
+        "discovery": "使用当前宿主已公开的对应能力，验证所需功能；缺失返回标准能力错误。",
+        "normalization": "成功转换为ok/artifacts/metadata/task_id/cost/warnings，失败保留code/message。",
+        "instructions": "通过宿主图像查看器打开本地参考及结果，记录真实观察。"
+      }
+    },
+    {
+      "capability_id": "media.image.generate",
+      "status": "implemented",
+      "features": [
+        "reference-image-edit",
+        "aspect-intent",
+        "local-artifact-result"
+      ],
+      "implementation": {
+        "kind": "stable-cli",
+        "package": "@petercjl/sealseek-media-cli",
+        "skill": "sealseek-media",
+        "entry": "current installed sealseek-media/scripts/run.mjs",
+        "discovery": "从当前宿主目录解析精确Skill名；通过该安装入口skill source返回canonical source，完整读取；capabilities --live与models show --live后验证参数。",
+        "instructions": "使用当前Agent显式绑定；image generate先dry-run，获授权后--via sealseek --submit；保留并跟随task_id，读取真实本地文件后验收。应用自有项目默认archive none；用户指定画布时保留明确位置合同。默认显式传--model nano-banana-pro（用户指定）；本次明确选择其他模型时保留该选择并验证合同。",
+        "normalization": "将CLI task_id/status/artifacts/urls及实际文件尺寸映射为ok/artifacts/metadata/task_id/cost/warnings；失败保留原code和恢复步骤。"
+      }
+    },
+    {
+      "capability_id": "commerce.tbcli",
+      "status": "implemented",
+      "features": [
+        "item-summary-v1",
+        "merchant-inspect",
+        "folder-upload-v1",
+        "publish",
+        "prepare",
+        "persistent-publication-journal"
+      ],
+      "implementation": {
+        "kind": "stable-cli",
+        "discovery": "tbcli skill source --json -> 完整当前SKILL -> version/capabilities；选择当前Agent运行入口。",
+        "normalization": "成功转换为ok/artifacts/metadata/task_id/cost/warnings，失败保留code/message。",
+        "instructions": "merchant/buyer由当前tbcli合同管理；默认publish，明确检查才prepare。"
+      }
+    }
+  ],
+  "compatibility": "SealSeek CLI生图映射已实现；当前宿主真实任务和图像质量证据分别记录，其他宿主只声明合同兼容。"
+}
