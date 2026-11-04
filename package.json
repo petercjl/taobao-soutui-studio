@@ -1,6 +1,6 @@
 {
   "name": "@petercjl/taobao-soutui-studio",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Taobao and Tmall recommendation-material application Skill",
   "files": [
     "skills",
