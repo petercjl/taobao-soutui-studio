@@ -1,10 +1,16 @@
 {
   "name": "@petercjl/taobao-soutui-studio",
   "version": "0.1.0",
-  "description": "Taobao and Tmall recommendation-material application Skill",
+  "description": "按商品归档淘宝与天猫搜推图文创作、验收和复盘",
   "files": [
+    "bin",
+    "src",
     "skills",
-    "README.md"
+    "capabilities.json",
+    "skill-integrity.json",
+    "README.md",
+    "INSTALL.md",
+    "UPDATE.md"
   ],
   "publishConfig": {
     "access": "public"
@@ -12,5 +18,21 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/petercjl/taobao-soutui-studio.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "taobao-soutui-studio": "bin/taobao-soutui-studio.mjs"
+  },
+  "scripts": {
+    "check": "node src/identity.mjs",
+    "test": "node --test",
+    "prepack": "npm run check",
+    "postinstall": "node src/install-notice.mjs"
+  },
+  "agentPackage": {
+    "kind": "application-skill"
   }
 }

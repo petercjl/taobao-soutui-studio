@@ -71,18 +71,31 @@
       "capability_id": "commerce.tbcli",
       "status": "implemented",
       "features": [
-        "item-summary-v1",
-        "merchant-inspect",
-        "folder-upload-v1",
-        "publish",
-        "prepare",
-        "persistent-publication-journal"
+        "item-summary-v1"
       ],
       "implementation": {
         "kind": "stable-cli",
         "discovery": "tbcli skill source --json -> 完整当前SKILL -> version/capabilities；选择当前Agent运行入口。",
-        "normalization": "成功转换为ok/artifacts/metadata/task_id/cost/warnings，失败保留code/message。",
-        "instructions": "merchant/buyer由当前tbcli合同管理；默认publish，明确检查才prepare。"
+        "normalization": "核对商品ID、标题、店铺名称与有序主图来源。",
+        "instructions": "按 references/topics/tbcli-handoff.md 使用买家入口读取公开商品摘要。"
+      }
+    },
+    {
+      "capability_id": "research.xhscli",
+      "status": "implemented",
+      "features": [
+        "search-xlsx-v1",
+        "note-json-v1",
+        "completeness-status",
+        "note-media-download-v1"
+      ],
+      "implementation": {
+        "kind": "stable-cli",
+        "package": "@petercjl/xhscli",
+        "skill": "xhscli",
+        "discovery": "解析当前宿主的xhscli Skill。带.runtime时按其package.json的bin.xhscli使用自有入口，否则发现PATH；同一入口skill source后加载完整canonical Skill，再读capabilities/help。",
+        "instructions": "按references/topics/xhscli-handoff.md执行search与note get --download-media，使用media.files实际文件，不另行解析媒体直链下载。",
+        "normalization": "保留原回执、completeness和media，核对mediaComplete、逐项下载状态、字节数与SHA-256，再进行视觉验收。"
       }
     }
   ],

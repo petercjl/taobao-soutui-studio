@@ -1,4 +1,4 @@
 interface:
   display_name: "淘宝搜推图文制作"
-  short_description: "按商品维护九方向台账，用Nano Pro生成八张候选，经用户选图后上传发布"
+  short_description: "按商品维护九方向台账，用Nano Pro生成八张候选并交付整篇发布文案"
   default_prompt: "使用 $taobao-soutui-studio，读取或建立这个商品的搜推台账，先规划方向让我选择。"

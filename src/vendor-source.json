@@ -1,0 +1,8 @@
+{
+  "ownerPackage": "@petercjl/tbcli",
+  "version": "0.11.2",
+  "module": "src/package-runtime.mjs",
+  "sha256": "efe9393ead6c9f1c7a4fc69019f5fd3ed60f33dac8d271fc474fce28544cca14",
+  "policy": "Pinned generic maintenance runtime; update from canonical owning capability package and test both consumers.",
+  "localAdaptation": "Configurable canonical Skill parent retains the public skills/ path."
+}

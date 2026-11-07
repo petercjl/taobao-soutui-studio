@@ -9,7 +9,7 @@
   "capabilities": [
     {
       "id": "command.execute",
-      "purpose": "运行已发现的tbcli和本地输入校验器",
+      "purpose": "运行已发现的 tbcli、xhscli 与本地输入校验器",
       "required": true,
       "required_features": [
         "argv-execution",
@@ -26,7 +26,7 @@
       "side_effects": {
         "external_mutation": false,
         "may_cost_money": false,
-        "authorization": "仅执行本次用户意图；方向选择后才在授权内生成，用户选图后仅上传选中项；creative-only不访问商家后台，prepare不提交文章。"
+        "authorization": "按本次创作意图及能力合同执行；付费生成遵循已授权方向与预算。"
       },
       "errors": [
         "CAPABILITY_UNAVAILABLE",
@@ -58,7 +58,7 @@
       "side_effects": {
         "external_mutation": false,
         "may_cost_money": false,
-        "authorization": "仅执行本次用户意图；方向选择后才在授权内生成，用户选图后仅上传选中项；creative-only不访问商家后台，prepare不提交文章。"
+        "authorization": "按本次创作意图及能力合同执行；付费生成遵循已授权方向与预算。"
       },
       "errors": [
         "CAPABILITY_UNAVAILABLE",
@@ -85,7 +85,7 @@
       "side_effects": {
         "external_mutation": false,
         "may_cost_money": false,
-        "authorization": "仅执行本次用户意图；方向选择后才在授权内生成，用户选图后仅上传选中项；creative-only不访问商家后台，prepare不提交文章。"
+        "authorization": "按本次创作意图及能力合同执行；付费生成遵循已授权方向与预算。"
       },
       "errors": [
         "CAPABILITY_UNAVAILABLE",
@@ -116,7 +116,7 @@
       "side_effects": {
         "external_mutation": true,
         "may_cost_money": true,
-        "authorization": "仅执行本次用户意图；方向选择后才在授权内生成，用户选图后仅上传选中项；creative-only不访问商家后台，prepare不提交文章。"
+        "authorization": "按本次创作意图及能力合同执行；付费生成遵循已授权方向与预算。"
       },
       "errors": [
         "CAPABILITY_UNAVAILABLE",
@@ -127,38 +127,64 @@
     },
     {
       "id": "commerce.tbcli",
-      "purpose": "采集商品、核对店铺、上传图片、按mode发布",
+      "purpose": "通过买家入口只读采集公开商品摘要和主图来源",
       "required": true,
       "required_features": [
-        "item-summary-v1",
-        "merchant-inspect",
-        "folder-upload-v1",
-        "publish",
-        "prepare",
-        "persistent-publication-journal"
+        "item-summary-v1"
       ],
       "input_fields": [
-        "itemId",
-        "shopName",
-        "files",
-        "title",
-        "body",
-        "mode"
+        "itemId"
       ],
       "output_fields": [
-        "summary",
-        "uploadReceipt",
-        "publicationReceipt"
+        "summary"
       ],
       "side_effects": {
-        "external_mutation": true,
+        "external_mutation": false,
         "may_cost_money": false,
-        "authorization": "仅执行本次用户意图；方向选择后才在授权内生成，用户选图后仅上传选中项；creative-only不访问商家后台，prepare不提交文章。"
+        "authorization": "仅按本次意图通过买家入口读取公开商品资料。"
       },
       "errors": [
         "CAPABILITY_UNAVAILABLE",
         "FEATURE_UNSUPPORTED",
         "AUTH_REQUIRED",
+        "OUTPUT_CONTRACT_FAILED"
+      ]
+    },
+    {
+      "id": "research.xhscli",
+      "purpose": "在小红书研究节点搜索、导出笔记及评论，并归档图片、视频和可用Live素材",
+      "required": false,
+      "required_features": [
+        "search-xlsx-v1",
+        "note-json-v1",
+        "completeness-status",
+        "note-media-download-v1"
+      ],
+      "input_fields": [
+        "keyword",
+        "filters",
+        "noteUrl",
+        "outputPath"
+      ],
+      "output_fields": [
+        "searchWorkbook",
+        "noteJson",
+        "complete",
+        "failure",
+        "mediaComplete",
+        "mediaDirectory",
+        "mediaFiles"
+      ],
+      "side_effects": {
+        "external_mutation": false,
+        "may_cost_money": false,
+        "authorization": "小红书研究授权内只读平台内容并本地归档"
+      },
+      "errors": [
+        "DEPENDENCY_MISSING",
+        "CONTRACT_UNSUPPORTED",
+        "LOGIN_REQUIRED",
+        "VERIFICATION_REQUIRED",
         "OUTPUT_CONTRACT_FAILED"
       ]
     }

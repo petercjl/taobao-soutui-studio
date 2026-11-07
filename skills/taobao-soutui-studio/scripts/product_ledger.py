@@ -175,7 +175,13 @@ def apply_event(state, event, project):
     return state
 
 
-def status(batch):
+def status(batch, project=None):
+    if batch.get('runPath') and project is not None:
+        manifest = asset_path(project, batch['runPath']) / '运行清单.json'
+        if manifest.is_file():
+            return {'complete': '创作已交付', 'partial': '创作部分完成'}.get(
+                read(manifest)['status'], '创作中')
+        return '运行清单待核实'
     if batch.get('kind') == 'pilot':
         return '待确认单张样图' if len(batch['candidates']) == 1 else '单张调试中'
     receipts = batch.get('receipts', [])
@@ -198,7 +204,7 @@ def dashboard(state, project):
     history_directions = [dict(d, title='历史方案 · ' + d['title']) for plan in state.get('directionPlanHistory', []) for d in plan['directions'] if d.get('batches')]
     for d in state['directions'] + history_directions:
         batches = d.get('batches', [])
-        label = ' / '.join(status(b) for b in batches) or ('待生成' if d.get('selected') else '待选择')
+        label = ' / '.join(status(b, project) for b in batches) or ('待生成' if d.get('selected') else '待选择')
         details = ''
         for b in batches:
             chosen = b.get('selection', {}).get('ids', [])
@@ -208,8 +214,13 @@ def dashboard(state, project):
             for c in b['candidates']:
                 p = verify_asset(project, c)
                 cards += f'<figure><a href="{esc(p.as_uri())}"><img src="{esc(p.as_uri())}"></a><figcaption>{esc(c["id"])} {"✓ 已选" if c["id"] in chosen else "候选"}</figcaption></figure>'
+            if b.get('runPath'):
+                manifest_path = asset_path(project, b['runPath']) / '运行清单.json'
+                link = f'<a href="{esc(manifest_path.as_uri())}">运行清单</a>' if manifest_path.is_file() else ''
+                details += f'<details><summary>{esc(b["id"])} · {esc(status(b, project))}</summary>{link}<div class="images">{cards}</div></details>'
+                continue
             cp = b.get('copy', {})
-            details += f'<p>{esc(progress)}</p><details><summary>{esc(b["id"])} · {esc(status(b))} · 选图顺序 {esc(chosen)}</summary><div class="images">{cards}</div><p>{esc(cp.get("title", ""))}</p><pre>{esc(cp.get("body", ""))}</pre></details>'
+            details += f'<p>{esc(progress)}</p><details><summary>{esc(b["id"])} · {esc(status(b, project))} · 选图顺序 {esc(chosen)}</summary><div class="images">{cards}</div><p>{esc(cp.get("title", ""))}</p><pre>{esc(cp.get("body", ""))}</pre></details>'
         visual = d.get('visual', {})
         visual_text = '<p>' + esc(' · '.join(str(visual[k]) for k in ('environment', 'surface', 'props', 'lighting', 'camera') if k in visual)) + '</p>' if visual else ''
         rows.append(f'<article><h2>{esc(d["id"])} · {esc(d["title"])} · {esc(label)}</h2><p>{esc(d["scene"])} / {esc(d["style"])} / {esc(d["copyAngle"])}</p>{visual_text}{details}</article>')
@@ -218,7 +229,7 @@ def dashboard(state, project):
         local = asset_path(project, ref['path']).as_uri() if ref.get('path') else None
         references += '<li>' + esc(ref.get('order', '')) + ' ' + (f'<a href="{esc(local)}">本地主图</a> ' if local else '') + (f'<a href="{esc(ref["url"])}">原始URL</a>' if ref.get('url') else '') + '</li>'
     references += '</ul></details>'
-    return '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>商品搜推台账</title><style>body{font:16px/1.7 system-ui;background:#f6f4ef;padding:24px}article{background:white;padding:20px;margin:16px 0;border-radius:12px}h2{font-size:20px}.images{display:flex;flex-wrap:wrap}figure{width:180px;margin:10px}img{width:100%}pre{white-space:pre-wrap}</style><h1>'+esc(state['product'].get('title', state['itemId']))+'</h1><p>商品 '+esc(state['itemId'])+' · 台账版本 '+str(state['revision'])+' · 上传与发布分别记录</p>'+references+''.join(rows)
+    return '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>商品搜推台账</title><style>body{font:16px/1.7 system-ui;background:#f6f4ef;padding:24px}article{background:white;padding:20px;margin:16px 0;border-radius:12px}h2{font-size:20px}.images{display:flex;flex-wrap:wrap}figure{width:180px;margin:10px}img{width:100%}pre{white-space:pre-wrap}</style><h1>'+esc(state['product'].get('title', state['itemId']))+'</h1><p>商品 '+esc(state['itemId'])+' · 台账版本 '+str(state['revision'])+'</p>'+references+''.join(rows)
 
 
 def commit(project, expected, event):
@@ -270,8 +281,11 @@ def main():
     if args.command == 'init':
         state = read(args.input); validate(state)
         project = Path(args.root).resolve() / state['itemId']
-        need(not project.exists(), 'PROJECT_EXISTS: use show/resume')
-        project.mkdir(parents=True)
+        if project.exists():
+            need(project.is_dir() and {p.name for p in project.iterdir()} <= {'商品资料', '创作记录'},
+                 'PROJECT_EXISTS: use show/resume')
+        else:
+            project.mkdir(parents=True)
         state = {**state, 'revision': 1, 'updatedAt': datetime.now(timezone.utc).isoformat()}
         write_new(project / 'ledger' / '00000001.json', state)
     else:

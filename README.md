@@ -1,9 +1,11 @@
-# 淘宝搜推素材制作
+# 淘宝搜推图文制作
 
-按商品资料策划并生成搜推图文，维护商品项目并支持经授权的发布交接。包内 Skill 位于 skills/taobao-soutui-studio。
+按商品 ID 和用户选择的方向制作淘宝、天猫搜推图文。交付八张候选图、一篇发布文案 TXT 和单独的迭代复盘。图片、顺序和封面由用户决定，发布由独立流程处理。
 
-安装提示词：「请安装 @petercjl/taobao-soutui-studio，把包内 taobao-soutui-studio Skill 和资源安装到当前 Agent 的 Skill 目录，并验证能被发现。」
+给当前使用的 Agent 发送：
 
-使用提示词：「用淘宝搜推图文制作处理商品 ID 123456789，先做本地图文。」
+> 帮我安装 @petercjl/taobao-soutui-studio，并同步当前 Agent 的 Skill。
 
-运行需要具备命令执行、文件操作、图像查看能力的 Agent，以及 Skill 声明的 Python、媒体与电商能力。服务登录、费用和发布授权由实际运行环境与用户意图决定。
+> 用 taobao-soutui-studio 为商品「商品 ID」规划搜推图文方向，先给我选。
+
+管理入口与完整 Skill 随包提供。创作需要本地 Python 和 Pillow、文件与图像检查能力，以及相应的采集、生图服务及授权。见 [安装](INSTALL.md) 和 [更新](UPDATE.md)。

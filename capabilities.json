@@ -1,0 +1,592 @@
+{
+  "package": "@petercjl/taobao-soutui-studio",
+  "version": "0.1.0",
+  "tool": "taobao-soutui-studio",
+  "entry": "bin/taobao-soutui-studio.mjs",
+  "commandContracts": {
+    "skill source": {
+      "options": {
+        "--agent": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--target-dir": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--skill-directory": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--skill": {
+          "type": "string",
+          "enum": [
+            "taobao-soutui-studio"
+          ]
+        },
+        "--mode": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--version": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--json": {
+          "type": "boolean"
+        },
+        "--help": {
+          "type": "boolean"
+        },
+        "--all": {
+          "type": "boolean",
+          "description": "enumerate all canonical Skill sources; mutually exclusive with --skill"
+        }
+      },
+      "sideEffects": "none",
+      "confirmation": {
+        "required": false,
+        "authority": "caller authorization; explicit selected target for mutation"
+      }
+    },
+    "skill status": {
+      "options": {
+        "--agent": {
+          "type": "string"
+        },
+        "--target-dir": {
+          "type": "string"
+        },
+        "--skill-directory": {
+          "type": "string"
+        },
+        "--skill": {
+          "type": "string",
+          "enum": [
+            "taobao-soutui-studio"
+          ]
+        },
+        "--mode": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--version": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--json": {
+          "type": "boolean"
+        },
+        "--help": {
+          "type": "boolean"
+        }
+      },
+      "sideEffects": "none",
+      "confirmation": {
+        "required": false,
+        "authority": "caller authorization; explicit selected target for mutation"
+      }
+    },
+    "skill install": {
+      "options": {
+        "--agent": {
+          "type": "string"
+        },
+        "--target-dir": {
+          "type": "string"
+        },
+        "--skill-directory": {
+          "type": "string"
+        },
+        "--skill": {
+          "type": "string",
+          "enum": [
+            "taobao-soutui-studio"
+          ]
+        },
+        "--mode": {
+          "type": "string"
+        },
+        "--version": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "source package version determines Skill bytes"
+        },
+        "--json": {
+          "type": "boolean"
+        },
+        "--help": {
+          "type": "boolean"
+        }
+      },
+      "sideEffects": "local-write",
+      "confirmation": {
+        "required": false,
+        "authority": "caller authorization; explicit selected target for mutation"
+      }
+    },
+    "skill update": {
+      "options": {
+        "--agent": {
+          "type": "string"
+        },
+        "--target-dir": {
+          "type": "string"
+        },
+        "--skill-directory": {
+          "type": "string"
+        },
+        "--skill": {
+          "type": "string",
+          "enum": [
+            "taobao-soutui-studio"
+          ]
+        },
+        "--mode": {
+          "type": "string"
+        },
+        "--version": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "source package version determines Skill bytes"
+        },
+        "--json": {
+          "type": "boolean"
+        },
+        "--help": {
+          "type": "boolean"
+        }
+      },
+      "sideEffects": "local-write",
+      "confirmation": {
+        "required": false,
+        "authority": "caller authorization; explicit selected target for mutation"
+      }
+    },
+    "update check": {
+      "options": {
+        "--agent": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--target-dir": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--skill-directory": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--skill": {
+          "type": "string",
+          "enum": [
+            "taobao-soutui-studio"
+          ]
+        },
+        "--mode": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--version": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--json": {
+          "type": "boolean"
+        },
+        "--help": {
+          "type": "boolean"
+        }
+      },
+      "sideEffects": "local-write",
+      "confirmation": {
+        "required": false,
+        "authority": "caller authorization; explicit selected target for mutation"
+      },
+      "network": "registry metadata with bounded cache writes"
+    },
+    "update install": {
+      "options": {
+        "--agent": {
+          "type": "string"
+        },
+        "--target-dir": {
+          "type": "string"
+        },
+        "--skill-directory": {
+          "type": "string"
+        },
+        "--skill": {
+          "type": "string",
+          "enum": [
+            "taobao-soutui-studio"
+          ]
+        },
+        "--mode": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "package updates always install physical isolated copies"
+        },
+        "--version": {
+          "type": "string"
+        },
+        "--json": {
+          "type": "boolean"
+        },
+        "--help": {
+          "type": "boolean"
+        }
+      },
+      "sideEffects": "package-and-skill-update",
+      "confirmation": {
+        "required": false,
+        "authority": "caller authorization; explicit selected target for mutation"
+      }
+    },
+    "update recover": {
+      "options": {
+        "--agent": {
+          "type": "string"
+        },
+        "--target-dir": {
+          "type": "string"
+        },
+        "--skill-directory": {
+          "type": "string"
+        },
+        "--skill": {
+          "type": "string",
+          "enum": [
+            "taobao-soutui-studio"
+          ]
+        },
+        "--mode": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "package updates always install physical isolated copies"
+        },
+        "--version": {
+          "type": "string"
+        },
+        "--json": {
+          "type": "boolean"
+        },
+        "--help": {
+          "type": "boolean"
+        }
+      },
+      "sideEffects": "package-and-skill-update",
+      "confirmation": {
+        "required": false,
+        "authority": "caller authorization; explicit selected target for mutation"
+      }
+    },
+    "version": {
+      "options": {
+        "--json": {
+          "type": "boolean"
+        },
+        "--help": {
+          "type": "boolean"
+        }
+      },
+      "sideEffects": "none",
+      "result": {
+        "ok": {
+          "field": "ok",
+          "type": "boolean"
+        },
+        "package": {
+          "field": "package",
+          "type": "string"
+        },
+        "version": {
+          "field": "version",
+          "type": "string"
+        }
+      }
+    },
+    "capabilities": {
+      "options": {
+        "--json": {
+          "type": "boolean"
+        },
+        "--help": {
+          "type": "boolean"
+        },
+        "--all": {
+          "type": "boolean"
+        }
+      },
+      "sideEffects": "none"
+    },
+    "help": {
+      "options": {
+        "--json": {
+          "type": "boolean"
+        },
+        "--help": {
+          "type": "boolean"
+        }
+      },
+      "sideEffects": "none"
+    },
+    "doctor": {
+      "options": {
+        "--json": {
+          "type": "boolean"
+        },
+        "--help": {
+          "type": "boolean"
+        }
+      },
+      "sideEffects": "none"
+    },
+    "operation status": {
+      "options": {
+        "--agent": {
+          "type": "string"
+        },
+        "--target-dir": {
+          "type": "string"
+        },
+        "--skill-directory": {
+          "type": "string"
+        },
+        "--skill": {
+          "type": "string",
+          "enum": [
+            "taobao-soutui-studio"
+          ]
+        },
+        "--mode": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--version": {
+          "type": "string",
+          "deprecated": true,
+          "semantics": "accepted legacy option; ignored by this operation"
+        },
+        "--json": {
+          "type": "boolean"
+        },
+        "--help": {
+          "type": "boolean"
+        }
+      },
+      "sideEffects": "none"
+    }
+  },
+  "maintenanceContract": {
+    "schemaVersion": 1,
+    "source": {
+      "name": {
+        "field": "skill",
+        "type": "string"
+      },
+      "package": {
+        "field": "package",
+        "type": "string"
+      },
+      "version": {
+        "field": "version",
+        "type": "string"
+      },
+      "path": {
+        "field": "source",
+        "type": "string"
+      }
+    },
+    "status": {
+      "name": {
+        "field": "skill",
+        "type": "string"
+      },
+      "package": {
+        "field": "package",
+        "type": "string"
+      },
+      "version": {
+        "field": "version",
+        "type": "string"
+      },
+      "target": {
+        "field": "destination",
+        "type": "string"
+      },
+      "installed": {
+        "field": "installed",
+        "type": "boolean"
+      },
+      "managed": {
+        "field": "managed",
+        "type": "boolean"
+      },
+      "current": {
+        "field": "current",
+        "type": "boolean"
+      },
+      "edited": {
+        "field": "edited",
+        "type": "string[]"
+      },
+      "verification": {
+        "field": "verification",
+        "type": "object"
+      },
+      "recovery": {
+        "field": "recovery",
+        "type": "object"
+      }
+    },
+    "targetOptions": {
+      "--target-dir": {
+        "kind": "skill-parent"
+      },
+      "--skill-directory": {
+        "kind": "skill-directory"
+      }
+    },
+    "agentEligibility": "valid-name-with-generic-fallback",
+    "hostDiscoveryAuthority": "host"
+  },
+  "installationLifecycle": {
+    "agentNeutral": true,
+    "targetRequired": true,
+    "hostRegistrationRequired": true,
+    "installationMode": "copy",
+    "isolatedRuntimeRequired": true,
+    "sharedLinksAllowed": false,
+    "skillRequired": true,
+    "updateRequiresSkillSync": true,
+    "required_components": [
+      "cli",
+      "skill"
+    ],
+    "install": "resolve current host target, discover skill source, install physical runtime and verify receipt",
+    "update": "resolve selected target before npm replacement, preserve edits and backup, reconcile same-version Skill",
+    "verification": "matching CLI and Skill versions, SHA-256 integrity, explicit host discovery verification",
+    "installGuide": "INSTALL.md",
+    "updateGuide": "UPDATE.md"
+  },
+  "automaticUpdates": {
+    "enabledByDefault": true,
+    "intervalHours": 6,
+    "timeoutMs": 1800,
+    "trigger": "ordinary business task entry, source and owned runtimes use their owner",
+    "configuration": "selected target via explicit option or per-package target environment",
+    "disable": "AGENT_PACKAGE_UPDATE_CHECK=0",
+    "recovery": "preserve current package offline; partial update operation record requires inspection",
+    "defaultMode": "notify"
+  },
+  "skills": [
+    "taobao-soutui-studio"
+  ],
+  "serviceDependencies": [
+    "tbcli item-summary-v1 (buyer read-only)",
+    "xhscli with note-media-download-v1",
+    "sealseek-media",
+    "product-asset-set"
+  ],
+  "compatibility": {
+    "hostEligibility": "Any agent with required capabilities and explicit target",
+    "testedPlatform": "macOS / Codex creative workflow",
+    "otherPlatforms": "not live-tested"
+  },
+  "discoveryContract": {
+    "schemaVersion": 1,
+    "entryPoints": [
+      {
+        "argv": [
+          "--help",
+          "--json"
+        ],
+        "result": "manifest"
+      },
+      {
+        "argv": [
+          "capabilities",
+          "--json"
+        ],
+        "result": "manifest"
+      },
+      {
+        "argv": [
+          "skill",
+          "source",
+          "--json"
+        ],
+        "result": "source"
+      }
+    ],
+    "commandsField": "commandContracts",
+    "structuredHelpAlias": "commands",
+    "version": {
+      "command": "version",
+      "argv": [
+        "version",
+        "--json"
+      ],
+      "fields": {
+        "package": {
+          "field": "package",
+          "type": "string"
+        },
+        "version": {
+          "field": "version",
+          "type": "string"
+        }
+      }
+    },
+    "skillCollection": {
+      "namesField": "skills",
+      "default": "taobao-soutui-studio",
+      "selector": {
+        "option": "--skill",
+        "type": "string"
+      },
+      "enumeration": {
+        "argv": [
+          "skill",
+          "source",
+          "--all",
+          "--json"
+        ],
+        "itemsField": "sources",
+        "completeField": "complete"
+      },
+      "namedSource": [
+        "skill",
+        "source",
+        "--skill",
+        "{skill}",
+        "--json"
+      ]
+    }
+  },
+  "agentPackage": {
+    "kind": "application-skill"
+  },
+  "requirements": {
+    "node": ">=22",
+    "business": [
+      "Python 3.10+ and Pillow",
+      "host image inspection",
+      "current service Skills where used"
+    ]
+  }
+}
