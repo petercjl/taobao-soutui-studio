@@ -1,7 +1,7 @@
 {
   "schema": "portable-skill-capabilities",
   "schema_version": "1.0.0",
-  "skill": "taobao-soutui-studio",
+  "skill": "product-seeding-studio",
   "target_platforms": [
     "codex",
     "generic"

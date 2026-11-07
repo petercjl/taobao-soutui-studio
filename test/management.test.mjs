@@ -7,7 +7,7 @@ import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const entry = path.join(root, 'bin/taobao-soutui-studio.mjs');
+const entry = path.join(root, 'bin/product-seeding-studio.mjs');
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 const invoke = (...args) => spawnSync(process.execPath, [entry, ...args, '--json'], { encoding: 'utf8' });
 const ok = result => {
@@ -20,7 +20,7 @@ test('version, discovery and explicit installation contract', () => {
   const source = ok(invoke('skill', 'source', '--all'));
   assert.equal(source.complete, true);
   assert.equal(source.sources[0].version, pkg.version);
-  assert.equal(source.sources[0].source, path.join(root, 'skills/taobao-soutui-studio'));
+  assert.equal(source.sources[0].source, path.join(root, 'skills/product-seeding-studio'));
   const missing = invoke('skill', 'install', '--agent', 'agent-test');
   assert.equal(JSON.parse(missing.stderr).code, 'TARGET_REQUIRED');
 });

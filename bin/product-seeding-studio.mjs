@@ -7,11 +7,11 @@ import { runMaintenance, maintenanceManifest } from '../src/package-runtime.mjs'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
-const tool = 'taobao-soutui-studio';
+const tool = 'product-seeding-studio';
 const config = {
   root, name: pkg.name, version: pkg.version, tool, skills: [tool],
   skillRoot: 'skills', entry: pkg.bin[tool], runtimeItems: [...pkg.files, 'package.json'],
-  targetEnvironment: 'SOUTUI_STUDIO_SKILL_TARGET',
+  targetEnvironment: 'PRODUCT_SEEDING_STUDIO_SKILL_TARGET',
 };
 const [command = 'help', ...args] = process.argv.slice(2);
 const print = value => console.log(JSON.stringify(value));

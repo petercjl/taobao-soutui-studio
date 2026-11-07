@@ -1,0 +1,4 @@
+interface:
+  display_name: "商品种草图文制作"
+  short_description: "从商品资料和生活场景出发，制作八张种草候选图、一篇文案与复盘"
+  default_prompt: "使用 $product-seeding-studio，先给这个商品规划种草图文方向，让我选择。"

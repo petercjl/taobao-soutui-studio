@@ -6,13 +6,13 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = relative => JSON.parse(fs.readFileSync(path.join(root, relative), 'utf8'));
 const pkg = read('package.json');
-const skill = 'skills/taobao-soutui-studio';
+const skill = 'skills/product-seeding-studio';
 const sync = process.argv.includes('--sync');
 const manifestPath = skill + '/package.json';
 if (sync) {
   for (const [file, data] of [
     ['capabilities.json', { ...read('capabilities.json'), version: pkg.version }],
-    [manifestPath, { name: 'taobao-soutui-studio-skill', version: pkg.version, ownerPackage: pkg.name }],
+    [manifestPath, { name: 'product-seeding-studio-skill', version: pkg.version, ownerPackage: pkg.name }],
   ]) fs.writeFileSync(path.join(root, file), JSON.stringify(data, null, 2) + '\n');
 }
 
@@ -28,7 +28,7 @@ function walk(relative) {
   }
 }
 walk(skill);
-for (const file of ['capabilities.json', 'INSTALL.md', 'UPDATE.md', pkg.bin['taobao-soutui-studio']]) {
+for (const file of ['capabilities.json', 'INSTALL.md', 'UPDATE.md', pkg.bin['product-seeding-studio']]) {
   inventory[file] = hash(path.join(root,file));
 }
 const expected = { package: pkg.name, version: pkg.version, files: inventory };

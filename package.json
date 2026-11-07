@@ -1,7 +1,7 @@
 {
-  "name": "@petercjl/taobao-soutui-studio",
+  "name": "@petercjl/product-seeding-studio",
   "version": "0.2.0",
-  "description": "按商品归档淘宝与天猫搜推图文创作、验收和复盘",
+  "description": "生活化商品种草图文创作、验收和复盘",
   "files": [
     "bin",
     "src",
@@ -24,7 +24,7 @@
     "node": ">=22"
   },
   "bin": {
-    "taobao-soutui-studio": "bin/taobao-soutui-studio.mjs"
+    "product-seeding-studio": "bin/product-seeding-studio.mjs"
   },
   "scripts": {
     "check": "node src/identity.mjs",

@@ -1,8 +1,8 @@
 {
-  "package": "@petercjl/taobao-soutui-studio",
+  "package": "@petercjl/product-seeding-studio",
   "version": "0.2.0",
-  "tool": "taobao-soutui-studio",
-  "entry": "bin/taobao-soutui-studio.mjs",
+  "tool": "product-seeding-studio",
+  "entry": "bin/product-seeding-studio.mjs",
   "commandContracts": {
     "skill source": {
       "options": {
@@ -24,7 +24,7 @@
         "--skill": {
           "type": "string",
           "enum": [
-            "taobao-soutui-studio"
+            "product-seeding-studio"
           ]
         },
         "--mode": {
@@ -68,7 +68,7 @@
         "--skill": {
           "type": "string",
           "enum": [
-            "taobao-soutui-studio"
+            "product-seeding-studio"
           ]
         },
         "--mode": {
@@ -108,7 +108,7 @@
         "--skill": {
           "type": "string",
           "enum": [
-            "taobao-soutui-studio"
+            "product-seeding-studio"
           ]
         },
         "--mode": {
@@ -146,7 +146,7 @@
         "--skill": {
           "type": "string",
           "enum": [
-            "taobao-soutui-studio"
+            "product-seeding-studio"
           ]
         },
         "--mode": {
@@ -190,7 +190,7 @@
         "--skill": {
           "type": "string",
           "enum": [
-            "taobao-soutui-studio"
+            "product-seeding-studio"
           ]
         },
         "--mode": {
@@ -231,7 +231,7 @@
         "--skill": {
           "type": "string",
           "enum": [
-            "taobao-soutui-studio"
+            "product-seeding-studio"
           ]
         },
         "--mode": {
@@ -269,7 +269,7 @@
         "--skill": {
           "type": "string",
           "enum": [
-            "taobao-soutui-studio"
+            "product-seeding-studio"
           ]
         },
         "--mode": {
@@ -368,7 +368,7 @@
         "--skill": {
           "type": "string",
           "enum": [
-            "taobao-soutui-studio"
+            "product-seeding-studio"
           ]
         },
         "--mode": {
@@ -494,7 +494,7 @@
     "defaultMode": "notify"
   },
   "skills": [
-    "taobao-soutui-studio"
+    "product-seeding-studio"
   ],
   "serviceDependencies": [
     "tbcli item-summary-v1 (buyer read-only)",
@@ -554,7 +554,7 @@
     },
     "skillCollection": {
       "namesField": "skills",
-      "default": "taobao-soutui-studio",
+      "default": "product-seeding-studio",
       "selector": {
         "option": "--skill",
         "type": "string"
