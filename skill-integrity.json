@@ -1,12 +1,12 @@
 {
   "package": "@petercjl/product-seeding-studio",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "files": {
     "skills/product-seeding-studio/adapters/codex.json": "09b9a1bfa5c922e5ae8b577a12d9e690c860c39948e323f9dd34ba69ac988a86",
     "skills/product-seeding-studio/adapters/generic.json": "f4f1a234cf88f6c6ffba8e489b324c5229aac51804dccb4f72db3dc490bdba69",
     "skills/product-seeding-studio/agents/openai.yaml": "e7fa280172aab148f439e2a6c7c2d568f30512dcc9db54a778550773f8df8b60",
     "skills/product-seeding-studio/capabilities.json": "4fcf60dd9f1eba14d4c59b334d0706da1ce4756390bdf5c83400e4aec51d4c4d",
-    "skills/product-seeding-studio/package.json": "9f6945a1cdd60009818fd4547b02f8489a0c0e745cfdede1fc35b5ce918ff7fe",
+    "skills/product-seeding-studio/package.json": "99506c452cbd5eeb4e4d8e483819fa6f2632a3f46f6075cc7af03150d967785b",
     "skills/product-seeding-studio/references/index.md": "55e65a5f5fbe7602999ab3b4acaddcb30ab03498dbaa54ec4243dc0c302b655f",
     "skills/product-seeding-studio/references/log.md": "46f5159a3c37549f0d4a0e2299e11cf6a42844d7baca442cdb578792e01eba8b",
     "skills/product-seeding-studio/references/queries/generate-and-review.md": "98a71925036abdaa9e17e5b59a30d49d1c5da159b35aed436a9555c380f7fed8",
@@ -40,7 +40,7 @@
     "skills/product-seeding-studio/scripts/image_review_html.py": "dbdf6f286950e04a721ad08c9b5523c4cf33101b918c804d87eb009f2d216e79",
     "skills/product-seeding-studio/scripts/product_ledger.py": "e0b40f7bfd7294b8bc31e4a06dd77246c918c7b1fc2c540d6a27d608007a12e5",
     "skills/product-seeding-studio/SKILL.md": "2a5732ec8651f7338ea04c52c4e07d0424c294800956d3d0e730e00988348cbb",
-    "capabilities.json": "002b1b2230ee6f1b8d6bae563920f6057d1e3b7cc5509397bdd3885420b2cfd0",
+    "capabilities.json": "e3ea55e91390eef12424afe2de9240ac24b6f439eaddb5dfce3e4114a7a0c07f",
     "INSTALL.md": "5fb2fab328c458f6a0b85ae6e95e3857a4baee42a1f03afe738c3e13db00a24a",
     "UPDATE.md": "1234bd41cacdc87836d08d4bc04dfb824ea065abcc6b1059ef9874badd1ecd90",
     "bin/product-seeding-studio.mjs": "0d25b1d54e0d9c9ea631dabd8c9cc0c0bde41596622b5d3e97efecf810437256"

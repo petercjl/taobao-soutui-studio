@@ -1,6 +1,6 @@
 {
   "package": "@petercjl/product-seeding-studio",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "tool": "product-seeding-studio",
   "entry": "bin/product-seeding-studio.mjs",
   "commandContracts": {
