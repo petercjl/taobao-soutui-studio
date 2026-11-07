@@ -1,6 +1,6 @@
 {
   "name": "@petercjl/taobao-soutui-studio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "按商品归档淘宝与天猫搜推图文创作、验收和复盘",
   "files": [
     "bin",

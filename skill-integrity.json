@@ -1,12 +1,12 @@
 {
   "package": "@petercjl/taobao-soutui-studio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "files": {
     "skills/taobao-soutui-studio/adapters/codex.json": "09b9a1bfa5c922e5ae8b577a12d9e690c860c39948e323f9dd34ba69ac988a86",
     "skills/taobao-soutui-studio/adapters/generic.json": "f4f1a234cf88f6c6ffba8e489b324c5229aac51804dccb4f72db3dc490bdba69",
     "skills/taobao-soutui-studio/agents/openai.yaml": "0b925fe9d47c6f49a22f17510efed109dd48652603d4fda44e2d7b3ef9ac7686",
     "skills/taobao-soutui-studio/capabilities.json": "4f0adffa309648d669e65cb46bd8010fccb2eec0afcb7b4a35d6a8f7d53dd581",
-    "skills/taobao-soutui-studio/package.json": "baddd9ebe7e2971cd71eb699428f06fc87b80901f09aa8a25381f80904e5e108",
+    "skills/taobao-soutui-studio/package.json": "3a87b49cfce1bb3685e3427f1b9dac73b2b2a1f97bbf8b0b416bc4af528ad3ad",
     "skills/taobao-soutui-studio/references/index.md": "55e65a5f5fbe7602999ab3b4acaddcb30ab03498dbaa54ec4243dc0c302b655f",
     "skills/taobao-soutui-studio/references/log.md": "46f5159a3c37549f0d4a0e2299e11cf6a42844d7baca442cdb578792e01eba8b",
     "skills/taobao-soutui-studio/references/queries/generate-and-review.md": "98a71925036abdaa9e17e5b59a30d49d1c5da159b35aed436a9555c380f7fed8",
@@ -40,7 +40,7 @@
     "skills/taobao-soutui-studio/scripts/image_review_html.py": "dbdf6f286950e04a721ad08c9b5523c4cf33101b918c804d87eb009f2d216e79",
     "skills/taobao-soutui-studio/scripts/product_ledger.py": "e0b40f7bfd7294b8bc31e4a06dd77246c918c7b1fc2c540d6a27d608007a12e5",
     "skills/taobao-soutui-studio/SKILL.md": "598105ef7f653f5d89a048a2bcbf6fbf117589415b72dc28b9c3a7daf05ee202",
-    "capabilities.json": "644cb096fde5ea04f686e8e1f7d4481e8485c793c4053d83d3ab2ab13e93caf4",
+    "capabilities.json": "4ca706acd01d0756318b4e92dafe6843241e3a4d2bdcdd93bbaeac1a934c2ad5",
     "INSTALL.md": "950b7be70a1f7d20d8077c3820aa0f694644fcc6326ce21cc5cf3b8eb5a2243f",
     "UPDATE.md": "94e095b7e7598939d49424bfe64d2ddcf23b1e79cc8eae11161ea729775aef17",
     "bin/taobao-soutui-studio.mjs": "ef3312d0e92a12cde365783e8240391c15798f44929a61ffc28dfd2601c87b75"
